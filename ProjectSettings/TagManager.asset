@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - chara
+  - attack_area
+  - defend_area
+  - static_env
+  - interactive_env
   layers:
   - Default
   - TransparentFX
