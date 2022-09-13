@@ -9,6 +9,8 @@ public class BasicChara : MonoBehaviour
 
     public float gravity = 9.8f;
 
+    public float falling_draw = - 1;
+
     public Vector3 velocity = new Vector3();
 
     public Vector3 direction = new Vector3();
@@ -32,8 +34,12 @@ public class BasicChara : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Vector3 f0 = new Vector3(0f, -gravity, 0f) + velocity;
-        character_controller.Move(f0 * Time.fixedDeltaTime);
+        velocity.y -= gravity * Time.fixedDeltaTime;
+        if (character_controller.isGrounded)
+        {
+            velocity.y = falling_draw;
+        }
+        character_controller.Move(velocity * Time.fixedDeltaTime);
     }
     // 当一个防御区被击溃
     public virtual void OnLoseDefendArea(DefendeArea def)

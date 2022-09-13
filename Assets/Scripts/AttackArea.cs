@@ -34,7 +34,7 @@ public class AttackArea : MonoBehaviour
         transform.Translate(velocity * Time.fixedDeltaTime);
     }
     // 当触发器被触发时(触发器应该和此脚本在同一物体下,攻击区域永远应该是碰撞触发器)
-    public void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         Debug.Log(other);
         if (other.gameObject == attacker)

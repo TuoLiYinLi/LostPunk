@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerCursor : MonoBehaviour
 {
     public Transform player_transform = null;
+    public Vector3 ori_direction = new Vector3();
     // Start is called before the first frame update
     void Start()
     {
-        
+        ori_direction = transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -18,7 +19,7 @@ public class PlayerCursor : MonoBehaviour
         Vector3 target_posi = GetTargetPosi();
 
         Quaternion q = new Quaternion();
-        q.eulerAngles = new Vector3(90f, Mathf.Atan2(target_posi.x - player_posi.x, target_posi.z - player_posi.z) / Mathf.PI * 180, 0);
+        q.eulerAngles = new Vector3(0f, Mathf.Atan2(target_posi.x - player_posi.x, target_posi.z - player_posi.z) / Mathf.PI * 180, 0) + ori_direction;
 
         transform.SetPositionAndRotation(target_posi, q);
     }

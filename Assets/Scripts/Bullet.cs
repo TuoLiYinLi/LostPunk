@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Bullet : AttackArea
 {
-    void Start()
+    public override void OnTriggerEnter(Collider other)
     {
-        damage = 10;
+        base.OnTriggerEnter(other);
+        Destroy(gameObject);
     }
 }

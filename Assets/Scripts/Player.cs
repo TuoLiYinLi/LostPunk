@@ -20,11 +20,13 @@ public class Player : BasicChara
     public new void Update()
     {
         base.Update();
-
-        velocity.x = Input.GetAxis("Vertical") + Input.GetAxis("Horizontal");
-        velocity.z = Input.GetAxis("Vertical") - Input.GetAxis("Horizontal");
-
-        velocity = velocity.normalized * 2f;
+        
+        if(character_controller.isGrounded)
+        { 
+            velocity.x = Input.GetAxis("Vertical") + Input.GetAxis("Horizontal");
+            velocity.z = Input.GetAxis("Vertical") - Input.GetAxis("Horizontal");
+            velocity = velocity.normalized * 2f;
+        }
 
         if (Input.GetMouseButtonUp(0))
         {
